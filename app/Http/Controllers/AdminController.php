@@ -1,0 +1,75 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Admin;
+
+class AdminController extends Controller
+{
+    //login
+    function login(){
+        return view('components.login');
+    }
+    //register
+    function register(){
+        return view('components.register');
+    }
+    //save user via register
+    function save(Request $request){
+        //validate requests
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required|email|unique:admins',
+            'password'=>'required|min:5'
+        ]);
+
+        //Insert data
+        $admin = new Admin;
+        $admin->name = $request->name;
+        $admin->email = $request->email;
+        $admin->password = $request->password;
+        $save = $admin->save();
+
+        if($save){
+            return redirect('auth/login')->with('success', 'Registered Succesfully');
+        }else{
+            return back()->with('fail', 'Something went wrong, try again..');
+        }
+    }
+
+    //Authenticate user
+    function check(Request $request){
+        //validate requests
+        $request->validate([
+            'email'=>'required|email',
+            'password'=>'required|min:5'
+        ]);
+        $user = Admin::where('email','=',$request->email)->first();
+        if(!$user){
+            return back()->with('fail','You are not a registered user');
+        }else{
+            if($request->password == $user->password){
+                $request->session()->put('LoggedUser', $user->id);
+                return redirect('user/dashboard');
+            }else{
+                return back()->with('fail','Incorrect password');    
+            }
+        }
+    }
+
+    //Dashboard
+    function dashboard(){
+        $data = ['LoggedUser'=>Admin::where('id','=',session('LoggedUser'))->first()];
+        return view('components.dashboard', $data);
+    }
+
+    //Logout
+    function logout(){
+        if(session()->has('LoggedUser')){
+            session()->pull('LoggedUser');
+            return redirect('auth/login');
+        }
+    }
+
+}
