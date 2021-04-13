@@ -9,21 +9,20 @@
 </head>
 <body>
     <div class="login__container">
-            <!-- <h4>Login</h4> -->
             <form action=" {{ route('components.check') }} " class="login__form" method='post'>
+                    @csrf
                     @if(Session::get('success'))
                         {{ Session::get('success') }}
                     @endif
-                    @csrf
+                    @if(Session::get('fail'))
+                        {{ Session::get('fail') }}
+                    @endif
                     <div class="row">
                         <span class="alert"> @error('email'){{ $message }} @enderror </span>
-                    <input type="text" name='email' value="{{ old('email') }}" placeholder='Enter Email'>
+                        <input type="text" name='email' value="{{ old('email') }}" placeholder='Enter Email Address'>
                     </div>
                     <div class="row">
-                        <span class="alert"> 
-                            @if(Session::get('fail'))
-                                {{ Session::get('fail') }}
-                            @endif
+                        <span class="alert">         
                             @error('password'){{ $message }} @enderror </span>
                         <input type="password" name='password' placeholder='Enter password'>
                     </div>

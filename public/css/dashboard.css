@@ -1,0 +1,212 @@
+body {
+    background-color: #1a1a1d;
+    background-image: url("../widgets/namaster.png");
+}
+
+.dashboard__container {
+    display: flex;
+    flex-direction: column;
+}
+
+span {
+    font-weight: 200;
+    font-size: 15px;
+}
+.dropdown {
+    display: flex;
+    margin-right: 30px;
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 8px;
+    align-self: center;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    padding: 5px;
+    margin-top: 30px;
+    border-radius: 8px;
+    z-index: 1;
+}
+.dropdown:hover {
+    border: 2px solid aqua;
+    background-color: black;
+    color: white;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+    background-color: #2e2e33;
+    border: 2px solid aqua;
+}
+.header__right > a:link,
+.header__right > a:visited {
+    color: white;
+    background-color: rgb(251, 63, 63);
+    border-radius: 10px;
+    padding: 5px;
+    text-decoration: none;
+    height: 20px;
+    margin-right: 10px;
+    border: 2px solid transparent;
+}
+.header__right > a:hover,
+.header__right > a:active {
+    border: 2px solid white;
+    color: white;
+}
+.header {
+    display: flex;
+    height: 60px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2e2e33;
+    border-radius: 8px;
+}
+.header__right {
+    display: flex;
+    align-items: baseline;
+}
+.logout__button {
+    height: 40px;
+}
+.header__logo {
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+.dashboard__view {
+    margin-top: 300px;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: aliceblue;
+}
+
+.list__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* padding: 10px; */
+    align-content: center;
+    justify-content: center;
+    row-gap: 50px;
+}
+.post__container {
+    display: grid;
+    justify-content: center;
+    padding: 10px;
+    row-gap: 0.1px;
+}
+.post__image {
+    border-radius: 5px;
+    align-self: center;
+    color: white;
+    text-align: center;
+    background-color: darkgray;
+    font-weight: bolder;
+}
+.info__field > h4 {
+    color: white;
+    text-align: center;
+}
+.post__title {
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    padding: 4px;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: gray;
+}
+
+/* .link__ref:link {
+    text-decoration: none;
+    text-align: center;
+    height: 15px;
+    border-radius: 5px;
+} */
+/* .sharelink__ref {
+    width: 100px;
+    margin-left: 90%;
+    margin-top: 20px;
+    text-align: center;
+    height: 10px !important;
+    background-image: url("../widgets/add_icon.png") !important;
+} */
+
+.sharelink__ref:link,
+.sharelink__ref:visited {
+    color: white;
+    text-align: center;
+    background-color: rgb(13, 128, 32);
+    border-radius: 10px;
+    padding: 5px;
+    text-decoration: none;
+    height: 15px;
+    width: 100px;
+    margin-top: 10px;
+    margin-left: 88%;
+    border: 2px solid transparent;
+}
+.sharelink__ref:hover,
+.sharelink__ref:active {
+    border: 2px solid;
+    color: white;
+}
+
+.link__ref:link,
+.link__ref:visited {
+    color: white;
+    text-align: center;
+    background-color: rgb(251, 63, 63);
+    border-radius: 10px;
+    margin-top: 5px;
+    padding: 5px;
+    text-decoration: none;
+    height: 20px;
+    margin-right: 10px;
+    border: 2px solid transparent;
+}
+.link__ref:hover,
+.link__ref:active {
+    border: 2px solid white;
+    color: white;
+}
+
+.edit__ref:link,
+.edit__ref:visited {
+    color: white;
+    text-align: center;
+    background-color: rgb(7, 129, 160);
+    border-radius: 10px;
+    margin-top: 5px;
+    padding: 5px;
+    text-decoration: none;
+    height: 20px;
+    margin-right: 10px;
+    border: 2px solid transparent;
+}
+.edit__ref:hover,
+.edit__ref:active {
+    border: 2px solid white;
+    color: white;
+}
+.alert__success {
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: rgb(4, 104, 17);
+}
+.alert__danger {
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: rgb(204, 21, 4);
+}

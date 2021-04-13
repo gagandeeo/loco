@@ -23,8 +23,21 @@ class AuthCheck
         if(session()->has('LoggedUser') && ($request->path() == 'auth/login' || $request->path() =='auth/register')){
             return back();
         }
-        return $next($request)->header('Cache-Control','no-cache,no-store,max-age=0,must-revalidate')
-                              ->header('Pragma','no-cache')
-                              ->header('Expires','Sat 01 Jan 2000 00:00:00 GMT');
+        $headers = [
+            'Access-Control-Allow-Origin'      => '*',
+            // 'Access-Control-Allow-Methods'     => 'POST, GET, OPTIONS',
+            // 'Access-Control-Allow-Credentials' => 'true',
+            // 'Access-Control-Max-Age'           => '86400',
+            // 'Access-Control-Allow-Headers'     => 'Content-Type, Authorization, X-Requested-With',
+            // 'Content-Type' => ''
+            'Cache-Control'=>'no-cache,no-store,max-age=0,must-revalidate',
+            'Pragma'=>'no-cache',
+            'Expires'=>'Sat 01 Jan 2000 00:00:00 GMT',
+        ];
+        $response = $next($request);
+        foreach($headers as $key => $value) {
+            $response->headers->set($key, $value);
+        }
+        return $response;
     }
 }
